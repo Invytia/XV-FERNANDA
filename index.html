@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años - Fernanda Polette</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- variables de diseño y paleta --- */
+        :root {
+            --rosa-fondo: #FAF4F4;
+            --rosa-palo: #F7EBEB;
+            --rosa-medio: #E2C2C2;
+            --dorado: #C5A059;
+            --dorado-oscuro: #A3803B;
+            --texto-oscuro: #3A3032;
+            --texto-suave: #6B5B5E;
+            --blanco: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--rosa-fondo);
+            color: var(--texto-oscuro);
+            text-align: center;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- animaciones de scroll --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- tipografías globales --- */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        .seccion-padding {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .linea-decorativa {
+            width: 60px;
+            height: 1px;
+            background-color: var(--dorado);
+            margin: 20px auto;
+        }
+
+        /* --- 1. portada / hero --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle, #ffffff 0%, var(--rosa-fondo) 100%);
+            padding: 20px;
+        }
+
+        /* Placeholder para fondo decorativo de assets (ej. flores) */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('assets/flores-top.png'); /* Ruta lista para tus assets */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: top center;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .hero-pre {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--dorado-oscuro);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .hero-nombre {
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--texto-oscuro);
+            margin-bottom: 10px;
+        }
+
+        .hero-nombre span {
+            display: block;
+            font-size: 2.8rem;
+            font-style: italic;
+            font-weight: 400;
+            font-family: 'Playfair Display', serif;
+            color: var(--dorado);
+            margin-top: 5px;
+        }
+
+        .hero-mensaje {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--texto-suave);
+            margin-top: 30px;
+            max-width: 400px;
+        }
+
+        .hero-fecha {
+            margin-top: 40px;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            font-weight: 400;
+            border-top: 1px solid var(--rosa-medio);
+            border-bottom: 1px solid var(--rosa-medio);
+            padding: 12px 30px;
+        }
+
+        /* --- 2. contador --- */
+        .contador-seccion {
+            background-color: var(--blanco);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(58, 48, 50, 0.03);
+            margin: -40px 20px 40px 20px;
+            position: relative;
+            z-index: 10;
+            padding: 40px 20px;
+        }
+
+        .contador-grid {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .cont-bloque {
+            display: flex;
+            flex-direction: column;
+            min-width: 70px;
+        }
+
+        .cont-numero {
+            font-size: 2.8rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--dorado);
+            font-weight: 600;
+        }
+
+        .cont-etiqueta {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--texto-suave);
+            margin-top: 2px;
+        }
+
+        /* --- 3. padres y padrinos --- */
+        .familia-seccion {
+            background-color: var(--rosa-palo);
+        }
+
+        .familia-titulo {
+            font-size: 2rem;
+            color: var(--texto-oscuro);
+            margin-bottom: 10px;
+        }
+
+        .familia-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .familia-grupo h3 {
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            color: var(--dorado-oscuro);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        .familia-nombre {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--texto-oscuro);
+        }
+
+        /* --- 4. ubicaciones --- */
+        .ubicaciones-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card-ubicacion {
+            background: var(--blanco);
+            padding: 40px 25px;
+            border-radius: 8px;
+            border: 1px solid var(--rosa-palo);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-ubicacion h3 {
+            font-size: 1.6rem;
+            color: var(--dorado-oscuro);
+            margin-bottom: 15px;
+        }
+
+        .card-ubicacion p {
+            font-size: 0.95rem;
+            color: var(--texto-suave);
+            margin-bottom: 8px;
+        }
+
+        .card-ubicacion .hora {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--texto-oscuro);
+            margin: 15px 0;
+        }
+
+        .btn-dorado {
+            display: inline-block;
+            background-color: var(--dorado);
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-dorado:hover {
+            background-color: var(--dorado-oscuro);
+        }
+
+        /* --- 5. detalles especiales --- */
+        .detalles-seccion {
+            background-color: var(--blanco);
+        }
+
+        .detalle-bloque {
+            margin-bottom: 50px;
+        }
+
+        .detalle-bloque:last-child {
+            margin-bottom: 0;
+        }
+
+        .gala-box {
+            font-size: 2.2rem;
+            letter-spacing: 6px;
+            color: var(--texto-oscuro);
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        .baul-icon {
+            font-size: 3rem;
+            color: var(--dorado);
+            margin-bottom: 10px;
+        }
+
+        /* --- 6. formularios e interactividad --- */
+        .form-seccion {
+            background-color: var(--rosa-palo);
+        }
+
+        .form-container {
+            background: var(--blanco);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            max-width: 550px;
+            margin: 30px auto 0 auto;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--texto-suave);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--rosa-medio);
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            background-color: var(--rosa-fondo);
+            color: var(--texto-oscuro);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--dorado);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M0 3l5 5 5-5z' fill='%236B5B5E'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+        }
+
+        /* --- responsive adaptable para móviles --- */
+        @media (max-width: 768px) {
+            .hero-nombre { font-size: 2.8rem; }
+            .hero-nombre span { font-size: 2.2rem; }
+            .familia-grid, .ubicaciones-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .contador-grid { gap: 12px; }
+            .cont-bloque { min-width: 55px; }
+            .cont-numero { font-size: 2.2rem; }
+            .seccion-padding { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-pre">Mis XV Años</div>
+        <h1 class="hero-nombre">Fernanda Polette <span>Rojas Franco</span></h1>
+        <div class="linea-decorativa"></div>
+        <div class="hero-mensaje">"Su presencia hará inolvidables mis 15"</div>
+        <div class="hero-fecha">08 . AGOSTO . 2026</div>
+    </section>
+
+    <div class="contador-seccion max-width reveal">
+        <div class="hero-pre" style="font-size:0.8rem; margin-bottom:20px;">Faltan exactamente</div>
+        <div class="contador-grid" id="reloj">
+            <div class="cont-bloque">
+                <span class="cont-numero" id="dias">00</span>
+                <span class="cont-etiqueta">Días</span>
+            </div>
+            <div class="cont-bloque">
+                <span class="cont-numero" id="horas">00</span>
+                <span class="cont-etiqueta">Hrs</span>
+            </div>
+            <div class="cont-bloque">
+                <span class="cont-numero" id="minutos">00</span>
+                <span class="cont-etiqueta">Min</span>
+            </div>
+            <div class="cont-bloque">
+                <span class="cont-numero" id="segundos">00</span>
+                <span class="cont-etiqueta">Seg</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="seccion-padding familia-seccion reveal">
+        <h2 class="familia-titulo">En compañía de mis seres queridos</h2>
+        <div class="linea-decorativa"></div>
+        
+        <div class="familia-grid">
+            <div class="familia-grupo">
+                <h3>Mis Padres</h3>
+                <div class="familia-nombre">Alfredo Rojas Florez</div>
+                <div class="familia-nombre">Carla Cristina Franco Ceseña</div>
+            </div>
+            <div class="familia-grupo">
+                <h3>Mis Padrinos</h3>
+                <div class="familia-nombre">Jesús Abel Orrantia Lopez</div>
+                <div class="familia-nombre">Claudia Viviana Franco Ceseña</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-padding reveal">
+        <h2 class="familia-titulo">¿Dónde celebraremos?</h2>
+        <div class="linea-decorativa"></div>
+        
+        <div class="ubicaciones-grid">
+            <div class="card-ubicacion reveal">
+                <div>
+                    <h3>Ceremonia Religiosa</h3>
+                    <div class="hora">1:00 PM</div>
+                    <p><strong>Parroquia Santa Teresa de Ávila</strong></p>
+                    <p>Av. Santa Maria 3120, Gabilando</p>
+                    <p>22040 Tijuana B.C.</p>
+                </div>
+                <div>
+                    <a href="https://maps.google.com" target="_blank" class="btn-dorado">Ver Mapa</a>
+                </div>
+            </div>
+
+            <div class="card-ubicacion reveal">
+                <div>
+                    <h3>Recepción</h3>
+                    <div class="hora">5:00 PM a 12:00 AM</div>
+                    <p><strong>Jardín Coral</strong></p>
+                    <p>Priv. 1, Río Tijuana 3a, Erapa, Rio Tijuana Gra Etapa</p>
+                    <p>22123 Tijuana, B.C.</p>
+                </div>
+                <div>
+                    <a href="https://maps.google.com" target="_blank" class="btn-dorado">Ver Mapa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-padding detalles-seccion reveal">
+        <div class="detalle-bloque">
+            <h2 class="familia-titulo">Código de Vestimenta</h2>
+            <div class="linea-decorativa"></div>
+            <div class="gala-box">GALA</div>
+            <p style="color: var(--texto-suave); margin-top: 10px; font-size: 0.95rem;">Agradecemos vestir de etiqueta formal para esta noche tan mágica.</p>
+        </div>
+
+        <div class="detalle-bloque" style="margin-top: 60px;">
+            <div class="baul-icon">✉</div>
+            <h2 class="familia-titulo">Mesa de Regalos</h2>
+            <div class="linea-decorativa"></div>
+            <p style="color: var(--texto-oscuro); font-weight: 500; font-size: 1.1rem; margin-bottom: 10px;">Baúl para dinero y regalos</p>
+            <p style="color: var(--texto-suave); max-width: 500px; margin: 0 auto; font-size: 0.95rem;">Tu presencia es el mejor regalo, pero si deseas tener un detalle conmigo, contaremos con un baúl especial el día del evento o regalos físicos.</p>
+        </div>
+    </section>
+
+    <section class="seccion-padding form-seccion reveal">
+        <h2 class="familia-titulo">Confirmación de Asistencia</h2>
+        <p style="color: var(--texto-suave); font-size: 0.95rem;">Por favor, confírmanos tu asistencia antes del evento.</p>
+        <div class="linea-decorativa"></div>
+
+        <div class="form-container">
+            <div class="form-group">
+                <label for="rsvp-nombre">Nombre Completo</label>
+                <input type="text" id="rsvp-nombre" class="form-control" placeholder="Ej. Familia Pérez López">
+            </div>
+            <div class="form-group">
+                <label for="rsvp-asistencia">¿Asistirás?</label>
+                <select id="rsvp-asistencia" class="form-control">
+                    <option value="Sí, asistiré con gusto">Sí, asistiré con gusto</option>
+                    <option value="Lo siento, no podré asistir">Lo siento, no podré asistir</option>
+                </select>
+            </div>
+            <button onclick="enviarRSVP()" class="btn-dorado" style="width: 100%; margin-top: 10px;">Confirmar por WhatsApp</button>
+        </div>
+    </section>
+
+    <section class="seccion-padding reveal" style="background-color: var(--blanco);">
+        <h2 class="familia-titulo">Muro de Deseos</h2>
+        <p style="color: var(--texto-suave); font-size: 0.95rem;">Dedícale unas hermosas palabras o un consejo a la festejada.</p>
+        <div class="linea-decorativa"></div>
+
+        <div class="form-container" style="background: var(--rosa-fondo); border: 1px solid var(--rosa-palo);">
+            <div class="form-group">
+                <label for="muro-nombre">Tu Nombre</label>
+                <input type="text" id="muro-nombre" class="form-control" placeholder="Ej. Tía María">
+            </div>
+            <div class="form-group">
+                <label for="muro-mensaje">Tu Mensaje Especial</label>
+                <textarea id="muro-mensaje" class="form-control" rows="4" placeholder="Escribe aquí tus felicitaciones o buenos deseos..."></textarea>
+            </div>
+            <button onclick="enviarDeseo()" class="btn-dorado" style="width: 100%; margin-top: 10px;">Enviar al Muro</button>
+        </div>
+    </section>
+
+    <script>
+        // --- 1. CUENTA REGRESIVA (8 de Agosto de 2026 a la 1:00 PM) ---
+        const fechaEvento = new Date(2026, 7, 8, 13, 0, 0).getTime(); // Nota: 7 = Agosto en JS (0-11)
+
+        const x = setInterval(function() {
+            const ahora = new Date().getTime();
+            const distancia = fechaEvento - ahora;
+
+            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            document.getElementById("dias").innerText = dias < 10 ? "0" + dias : dias;
+            document.getElementById("horas").innerText = horas < 10 ? "0" + horas : horas;
+            document.getElementById("minutos").innerText = minutos < 10 ? "0" + minutos : minutes;
+            document.getElementById("segundos").innerText = segundos < 10 ? "0" + segundos : segundos;
+
+            if (distancia < 0) {
+                clearInterval(x);
+                document.getElementById("reloj").innerHTML = "<h3 style='color: var(--dorado);'>¡Hoy es el gran día!</h3>";
+            }
+        }, 1000);
+
+        // --- 2. INTEGRACIÓN COMPLETA DE ENVIOS A WHATSAPP ---
+        const NUMERO_WHATSAPP = "526642681146";
+
+        function enviarRSVP() {
+            const nombre = document.getElementById('rsvp-nombre').value.trim();
+            const asistencia = document.getElementById('rsvp-asistencia').value;
+
+            if (nombre === "") {
+                alert("Por favor, ingresa tu nombre completo.");
+                return;
+            }
+
+            const mensajeWhatsApp = `✨ *Confirmación de Asistencia* ✨\n\nHola Fernanda, quiero confirmar los detalles de asistencia:\n\n👤 *Nombre:* ${nombre}\n💌 *Respuesta:* ${asistencia}\n\n¡Gracias por la invitación!`;
+            const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensajeWhatsApp)}`;
+            
+            window.open(url, '_blank');
+        }
+
+        function enviarDeseo() {
+            const nombre = document.getElementById('muro-nombre').value.trim();
+            const mensaje = document.getElementById('muro-mensaje').value.trim();
+
+            if (nombre === "" || mensaje === "") {
+                alert("Por favor, llena tu nombre y escribe un mensaje para el muro.");
+                return;
+            }
+
+            const mensajeWhatsApp = `🌸 *Mensaje para el Muro de Deseos* 🌸\n\nHola Fernanda, te dejo un mensaje con mucho cariño por tus XV Años:\n\n✍️ *De:* ${nombre}\n💬 *Mensaje:* "${mensaje}"\n\n¡Muchas felicidades! 🎉`;
+            const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensajeWhatsApp)}`;
+            
+            window.open(url, '_blank');
+        }
+
+        // --- 3. ANIMACIÓN INTERACTIVA AL HACER SCROLL (Efecto Premium) ---
+        const infoRevelar = document.querySelectorAll('.reveal');
+        
+        const observador = new IntersectionObserver((entradas) => {
+            entradas.forEach(entrada => {
+                if(entrada.isIntersecting){
+                    entrada.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1, // Se activa cuando asoma un 10% del elemento
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        infoRevelar.forEach(elemento => {
+            observador.observe(elemento);
+        });
+    </script>
+</body>
+</html>
