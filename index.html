@@ -6,243 +6,259 @@
 <title>Mis XV Años · Fernanda Polette</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Tipografías Premium y Editoriales: 
-     Playfair Display (Elegancia clásica para títulos)
-     Pinyon Script (Caligrafía fina y muy femenina)
-     Montserrat (Limpieza y legibilidad moderna) -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<!-- Tipografías: 
+     Clicker Script (Caligrafía coquette/moderna como la referencia)
+     Cormorant (Serif elegante premium)
+     Quicksand (Sans-serif redondeada y tierna) -->
+<link href="https://fonts.googleapis.com/css2?family=Clicker+Script&family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Paleta de rosas tiernos, elegantes y polvosos (Cero naranjas, cero colores chillones) */
-    --bg-light: #FDF9F9;
-    --bg-mid: #F8EDED;
-    --bg-deep: #F1E1E1;
-    --text-dark: #5C3A41; /* Tono ciruela/marrón muy suave para legibilidad sin ser negro agresivo */
-    --text-mid: #9E6B73;  /* Rosa viejo elegante */
-    --gold-rose: #C69A9E; /* Acento rubor/dorado rosa */
-    --accent-glow: rgba(235, 186, 191, 0.5);
+    /* Paleta 100% Rosa, Femenina y Tierna (Basada en tu imagen) */
+    --bg-base: #FDF2F5; /* Rosa bebé muy clarito para el fondo */
+    --pink-glow-1: #FFD6E4; /* Nubes de color rosa suave */
+    --pink-glow-2: #FFB5D0; /* Nubes de color rosa más intenso */
+    --text-main: #D84C77; /* Rosa fuerte/Fucsia para títulos principales */
+    --text-dark: #A63358; /* Rosa oscuro para textos de lectura (cero marrones) */
+    --text-light: #E87A9E; /* Rosa medio para acentos */
+    --white-trans: rgba(255, 255, 255, 0.6);
     
     --max-w: 640px;
-    --ease-premium: cubic-bezier(0.25, 1, 0.2, 1);
+    --ease-smooth: cubic-bezier(0.25, 1, 0.2, 1);
   }
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    background: var(--bg-light);
+    background-color: var(--bg-base);
     color: var(--text-dark);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     position: relative;
   }
 
+  /* Nubes de color (Glows) estilo la foto de referencia */
+  .bg-clouds {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0; overflow: hidden;
+  }
+  .cloud {
+    position: absolute; border-radius: 50%;
+    filter: blur(60px); opacity: 0.7;
+    animation: drift 15s infinite alternate ease-in-out;
+  }
+  .cloud.c1 { width: 300px; height: 300px; background: var(--pink-glow-1); top: -10%; left: -20%; }
+  .cloud.c2 { width: 400px; height: 400px; background: var(--pink-glow-2); top: 40%; right: -30%; animation-delay: -5s; }
+  .cloud.c3 { width: 350px; height: 350px; background: var(--pink-glow-1); bottom: -10%; left: 10%; animation-delay: -10s; }
+
+  @keyframes drift {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 50px) scale(1.1); }
+  }
+
   .wrap { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 2; overflow: hidden; }
 
-  /* ---------- Flores decorativas en formato PNG ---------- */
+  /* ---------- Flores Decorativas ---------- */
   .flor-deco {
     position: absolute;
     pointer-events: none;
-    z-index: 0;
-    opacity: 0.9;
-    animation: floatFloat 6s ease-in-out infinite alternate;
+    z-index: 1;
+    animation: float 6s ease-in-out infinite alternate;
   }
-  .flor-deco.f-hero-1 { top: -10px; left: -40px; width: 260px; }
-  .flor-deco.f-hero-2 { bottom: 5%; right: -50px; width: 240px; animation-delay: -3s; }
+  .flor-deco.f-hero-1 { top: -20px; left: -40px; width: 280px; transform: rotate(15deg); }
+  .flor-deco.f-hero-2 { bottom: 5%; right: -50px; width: 260px; animation-delay: -3s; }
   
-  .flor-deco.f-sec-1 { top: -20px; right: -30px; width: 220px; transform: rotate(45deg); }
-  .flor-deco.f-sec-2 { bottom: -30px; left: -40px; width: 250px; transform: rotate(-30deg); animation-delay: -2s; }
+  .flor-deco.f-sec-1 { top: -30px; right: -30px; width: 220px; transform: rotate(45deg); }
+  .flor-deco.f-sec-2 { bottom: -20px; left: -40px; width: 250px; transform: rotate(-20deg); animation-delay: -2s; }
   
-  .flor-deco.f-center { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 380px; opacity: 0.2; z-index: 0; }
+  .flor-deco.f-center { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; opacity: 0.15; z-index: 0; }
 
-  @keyframes floatFloat {
-    0% { transform: translateY(0) rotate(0deg) scale(1); }
-    100% { transform: translateY(-12px) rotate(2deg) scale(1.03); }
+  @keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-15px) rotate(3deg); }
   }
 
-  /* ---------- Pétalos ambientales tiernos ---------- */
-  .petals-layer { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
-  .petal {
-    position: absolute; top: -40px;
-    width: 10px; height: 14px;
-    border-radius: 50% 50% 50% 0;
-    opacity: 0.5;
-    animation: fall linear infinite;
-    will-change: transform;
+  /* ---------- Tipografía y Textos ---------- */
+  .script { 
+    font-family: 'Clicker Script', cursive; 
+    color: var(--text-main); 
+    line-height: 0.9; 
+    text-shadow: 0 0 15px rgba(255, 181, 208, 0.8); 
   }
-  @keyframes fall {
-    0% { transform: translateY(0) translateX(0) rotate(45deg); opacity: 0; }
-    10% { opacity: 0.5; }
-    50% { transform: translateY(52vh) translateX(25px) rotate(220deg); }
-    90% { opacity: 0.5; }
-    100% { transform: translateY(108vh) translateX(-15px) rotate(400deg); opacity: 0; }
-  }
-
-  /* ---------- Tipografía y Utilerías ---------- */
-  .script { font-family: 'Pinyon Script', cursive; color: var(--text-mid); line-height: 1; font-weight: 400; }
-  .serif { font-family: 'Playfair Display', serif; font-style: italic; }
+  .serif { font-family: 'Cormorant', serif; font-style: italic; font-weight: 500; }
   
   .eyebrow {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--gold-rose); font-weight: 400; display: block; margin-bottom: 16px;
+    color: var(--text-light); font-weight: 600; display: block; margin-bottom: 12px;
   }
 
   section { padding: 90px 24px; position: relative; text-align: center; z-index: 2; }
-  
-  .bg-gradient-1 { background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-mid) 100%); }
-  .bg-gradient-2 { background: linear-gradient(180deg, var(--bg-mid) 0%, var(--bg-light) 100%); }
-  .bg-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 65%); z-index: -1; filter: blur(40px); }
 
-  /* ================= SISTEMA DE ANIMACIONES (CORREGIDO PARA NO CORTAR LETRAS) ================= */
-  /* Se eliminó overflow:hidden del anim-wrap para que las letras cursivas puedan descender libremente */
-  .anim-wrap { display: inline-block; vertical-align: top; position: relative; }
-  .anim-text {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-    transition: transform 1.2s var(--ease-premium), opacity 1.2s var(--ease-premium);
-  }
-  .in .anim-text { opacity: 1; transform: translateY(0) scale(1); }
-
+  /* ================= ANIMACIONES (Sin cortar letras) ================= */
   .fade-up {
-    opacity: 0; transform: translateY(35px); filter: blur(3px);
-    transition: all 1.2s var(--ease-premium);
+    opacity: 0; transform: translateY(40px); filter: blur(4px);
+    transition: opacity 1.2s var(--ease-smooth), transform 1.2s var(--ease-smooth), filter 1.2s var(--ease-smooth);
   }
   .in.fade-up, .in .fade-up { opacity: 1; transform: translateY(0); filter: blur(0); }
+  
+  /* Retrasos para efecto cascada */
+  .d-1 { transition-delay: 0.1s; }
+  .d-2 { transition-delay: 0.2s; }
+  .d-3 { transition-delay: 0.3s; }
+  .d-4 { transition-delay: 0.4s; }
 
   /* ---------- HERO ---------- */
   #hero {
     min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 60px 24px;
-    background: radial-gradient(circle at 50% 30%, var(--bg-light) 0%, var(--bg-mid) 100%);
+    padding: 60px 24px; position: relative;
   }
-  #hero h1 { margin: 10px 0; }
-  #hero .script-line { display: block; font-size: clamp(65px, 18vw, 110px); text-shadow: 0 0 20px var(--accent-glow); padding: 5px 0; }
   
-  #hero .apellidos { font-family: 'Playfair Display', serif; font-size: 14px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--text-dark); margin-top: 15px; }
-  #hero .fecha { margin-top: 40px; font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 0.2em; color: var(--text-mid); font-weight: 400; text-transform: uppercase; }
-  #hero .welcome { max-width: 420px; margin: 30px auto 0; font-size: 14px; line-height: 1.9; font-weight: 300; }
+  #hero .title-wrap { margin: 15px 0 25px; position: relative; z-index: 2; }
+  /* Nombre en 2 renglones gigantes y femeninos */
+  #hero .script-line { 
+    display: block; 
+    font-size: clamp(80px, 22vw, 130px); 
+    padding: 10px 0;
+  }
+  #hero .script-line:last-child { margin-top: -30px; margin-left: 40px; } /* Desfase coqueto */
+
+  #hero .apellidos { font-family: 'Cormorant', serif; font-size: 18px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-dark); margin-top: 10px; font-weight: 600; }
+  #hero .fecha { margin-top: 35px; font-family: 'Quicksand', sans-serif; font-size: 13px; letter-spacing: 0.2em; color: var(--text-main); font-weight: 600; text-transform: uppercase; }
+  #hero .welcome { max-width: 400px; margin: 25px auto 0; font-size: 15px; line-height: 1.8; font-weight: 400; }
   
-  .scroll-cue { margin-top: 60px; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-rose); display: flex; flex-direction: column; align-items: center; gap: 14px; }
-  .scroll-cue .line { width: 1px; height: 50px; background: linear-gradient(180deg, var(--gold-rose), transparent); animation: stretch 2s ease-in-out infinite; }
-  @keyframes stretch { 0%, 100% { transform: scaleY(1); transform-origin: top; } 50% { transform: scaleY(1.4); transform-origin: top; } }
+  .scroll-cue { margin-top: 50px; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .scroll-cue .line { width: 2px; height: 40px; background: linear-gradient(180deg, var(--text-light), transparent); margin: 15px auto 0; animation: stretch 2s ease-in-out infinite; border-radius: 2px; }
+  @keyframes stretch { 0%, 100% { transform: scaleY(1); transform-origin: top; } 50% { transform: scaleY(1.5); transform-origin: top; } }
 
   /* ---------- FAMILIA ---------- */
-  .familia-grid { display: flex; flex-direction: column; gap: 40px; margin-top: 45px; }
-  .familia-block h3 { font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-rose); margin: 0 0 15px; font-weight: 400; }
-  .familia-block p { font-family: 'Playfair Display', serif; font-size: 22px; line-height: 1.6; margin: 0; color: var(--text-dark); }
-  .divider { width: 1px; height: 50px; background: linear-gradient(180deg, transparent, var(--gold-rose), transparent); margin: 15px auto; }
+  .familia-grid { display: flex; flex-direction: column; gap: 35px; margin-top: 40px; }
+  .familia-block h3 { font-family: 'Quicksand', sans-serif; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-light); margin: 0 0 10px; font-weight: 600; }
+  .familia-block p { font-family: 'Cormorant', serif; font-size: 24px; line-height: 1.5; margin: 0; color: var(--text-dark); font-weight: 500; }
+  .divider { width: 2px; height: 40px; background: linear-gradient(180deg, transparent, var(--text-light), transparent); margin: 10px auto; }
 
   /* ---------- MENSAJE ---------- */
   #mensaje blockquote {
-    font-family: 'Pinyon Script', cursive; font-size: clamp(40px, 10vw, 56px);
-    max-width: 480px; margin: 0 auto; line-height: 1.2; color: var(--text-mid);
-    padding: 20px 0;
+    font-family: 'Clicker Script', cursive; font-size: clamp(45px, 12vw, 65px);
+    max-width: 480px; margin: 0 auto; line-height: 1.3; color: var(--text-main);
+    padding: 30px 0; text-shadow: 0 0 20px rgba(255, 181, 208, 0.6);
   }
 
   /* ---------- COUNTDOWN (Forzado a 1 sola línea) ---------- */
   .cd-row { 
     display: flex; justify-content: center; align-items: center; 
-    gap: clamp(4px, 2vw, 18px); margin-top: 40px; 
-    flex-wrap: nowrap; /* Evita que se rompa en dos renglones */
+    gap: clamp(5px, 3vw, 20px); margin-top: 40px; 
+    flex-wrap: nowrap; /* Evita que se rompa */
     width: 100%;
   }
   .cd-cell { display: flex; flex-direction: column; align-items: center; min-width: auto; }
-  .cd-num { font-family: 'Playfair Display', serif; font-size: clamp(28px, 8vw, 48px); font-weight: 400; color: var(--text-dark); line-height: 1; }
-  .cd-label { font-size: clamp(8px, 2.5vw, 11px); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-rose); margin-top: 10px; }
-  .cd-sep { font-family: 'Playfair Display', serif; font-size: clamp(20px, 5vw, 32px); color: var(--text-mid); opacity: 0.4; padding-bottom: 15px; }
+  .cd-num { font-family: 'Cormorant', serif; font-size: clamp(32px, 8vw, 55px); font-weight: 600; color: var(--text-main); line-height: 1; }
+  .cd-label { font-size: clamp(9px, 2.5vw, 12px); letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-light); margin-top: 8px; font-weight: 600; }
+  .cd-sep { font-family: 'Cormorant', serif; font-size: clamp(24px, 6vw, 40px); color: var(--text-light); opacity: 0.5; padding-bottom: 20px; }
 
   /* ---------- UBICACIONES ---------- */
-  .loc-item { margin-top: 50px; position: relative; }
-  .loc-item h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--text-dark); margin: 15px 0 10px; font-weight: 500; font-style: normal; }
-  .loc-item p { font-size: 14px; line-height: 1.8; margin: 0 0 15px; color: var(--text-dark); }
-  .loc-item .hora { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: var(--text-mid); margin-bottom: 22px; }
+  .loc-item { 
+    margin-top: 50px; position: relative; 
+    background: var(--white-trans); 
+    padding: 40px 20px; border-radius: 30px; 
+    box-shadow: 0 15px 35px rgba(216, 76, 119, 0.05);
+    backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.8);
+  }
+  .loc-item h3 { font-family: 'Cormorant', serif; font-size: 28px; color: var(--text-main); margin: 15px 0 10px; font-weight: 600; font-style: normal; }
+  .loc-item p { font-size: 15px; line-height: 1.7; margin: 0 0 15px; font-weight: 500; }
+  .loc-item .hora { font-family: 'Cormorant', serif; font-style: italic; font-size: 22px; color: var(--text-dark); margin-bottom: 25px; font-weight: 600; }
   
   .btn {
-    position: relative; overflow: hidden; display: inline-block; padding: 14px 34px;
-    background: var(--text-mid); color: #fff; text-decoration: none; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; border-radius: 40px;
-    box-shadow: 0 10px 25px -10px var(--text-mid);
-    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    position: relative; display: inline-block; padding: 14px 35px;
+    background: linear-gradient(45deg, var(--text-main), var(--text-light));
+    color: #fff; text-decoration: none; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; border-radius: 40px; font-weight: 600;
+    box-shadow: 0 10px 25px rgba(216, 76, 119, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .btn:hover { transform: translateY(-3px) scale(1.02); background: var(--text-dark); box-shadow: 0 15px 30px -10px var(--text-dark); }
+  .btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 30px rgba(216, 76, 119, 0.6); }
 
   /* ---------- VESTIMENTA ---------- */
-  .gala-word { font-family: 'Pinyon Script', cursive; font-size: clamp(65px, 15vw, 90px); color: var(--text-mid); margin: 10px 0; }
-  #vestimenta p { font-size: 14px; max-width: 380px; margin: 0 auto; line-height: 1.9; }
+  .gala-word { font-family: 'Clicker Script', cursive; font-size: clamp(75px, 18vw, 110px); color: var(--text-main); margin: 10px 0; line-height: 1; text-shadow: 0 0 20px rgba(255, 181, 208, 0.8); }
+  #vestimenta p { font-size: 15px; max-width: 380px; margin: 0 auto; line-height: 1.8; font-weight: 500; }
 
   /* ---------- REGALOS ---------- */
-  .bau-grid { display: flex; flex-direction: column; gap: 45px; margin-top: 50px; text-align: center; }
-  .bau-item h4 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; color: var(--text-dark); margin: 0 0 12px; font-weight: 400; }
-  .bau-item p { font-size: 14px; line-height: 1.8; margin: 0 auto; max-width: 300px; }
-  #regalos .nota { margin-top: 60px; font-family: 'Pinyon Script', cursive; font-size: 40px; color: var(--text-mid); }
+  .bau-grid { display: flex; flex-direction: column; gap: 30px; margin-top: 45px; text-align: center; }
+  .bau-item { background: var(--white-trans); padding: 35px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(10px); }
+  .bau-item h4 { font-family: 'Cormorant', serif; font-style: italic; font-size: 26px; color: var(--text-main); margin: 0 0 15px; font-weight: 600; }
+  .bau-item p { font-size: 15px; line-height: 1.7; margin: 0 auto; max-width: 280px; font-weight: 500; }
+  #regalos .nota { margin-top: 50px; font-family: 'Clicker Script', cursive; font-size: 45px; color: var(--text-main); }
 
   /* ---------- FORMS ---------- */
-  form { max-width: 380px; margin: 40px auto 0; text-align: center; }
-  .input-group { position: relative; margin-bottom: 35px; text-align: left; }
-  .input-group label { display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-rose); margin-bottom: 12px; font-weight: 400; }
+  form { background: var(--white-trans); padding: 40px 25px; border-radius: 30px; max-width: 400px; margin: 35px auto 0; text-align: center; border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(216, 76, 119, 0.05); }
+  .input-group { position: relative; margin-bottom: 30px; text-align: left; }
+  .input-group label { display: block; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-bottom: 12px; font-weight: 600; }
   .input-group input, .input-group textarea {
-    width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid var(--gold-rose);
-    background: transparent; color: var(--text-dark); font-family: 'Montserrat', sans-serif; font-size: 14px;
+    width: 100%; padding: 12px 15px; border: 2px solid #FFE4EE; border-radius: 15px;
+    background: #fff; color: var(--text-dark); font-family: 'Quicksand', sans-serif; font-size: 15px; font-weight: 500;
     transition: border-color 0.3s ease, box-shadow 0.3s ease; resize: none;
   }
-  .input-group input:focus, .input-group textarea:focus { outline: none; border-color: var(--text-mid); }
+  .input-group input:focus, .input-group textarea:focus { outline: none; border-color: var(--text-light); box-shadow: 0 0 15px rgba(216, 76, 119, 0.15); }
   .submit-btn {
-    width: 100%; padding: 16px; background: var(--text-mid);
-    color: #fff; border: none; border-radius: 40px; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
-    cursor: pointer; transition: transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease; font-family: 'Montserrat', sans-serif;
+    width: 100%; padding: 16px; background: linear-gradient(45deg, var(--text-main), var(--text-light));
+    color: #fff; border: none; border-radius: 40px; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 600;
+    cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 10px 25px rgba(216, 76, 119, 0.4); font-family: 'Quicksand', sans-serif;
   }
-  .submit-btn:hover { background: var(--text-dark); transform: translateY(-2px); box-shadow: 0 15px 25px -10px var(--text-dark); }
-  .form-hint { font-size: 11px; color: var(--gold-rose); margin-top: 20px; text-align: center; font-style: italic; }
+  .submit-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 30px rgba(216, 76, 119, 0.6); }
+  .form-hint { font-size: 12px; color: var(--text-light); margin-top: 20px; text-align: center; font-weight: 500; }
 
-  footer { padding: 90px 24px 60px; text-align: center; background: var(--bg-deep); }
-  footer .script { font-family: 'Pinyon Script', cursive; font-size: 50px; color: var(--text-mid); margin-bottom: 15px; }
-  footer .sub { font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--text-dark); }
+  footer { padding: 80px 24px 60px; text-align: center; }
+  footer .script { font-family: 'Clicker Script', cursive; font-size: 60px; color: var(--text-main); margin-bottom: 15px; }
+  footer .sub { font-family: 'Quicksand', sans-serif; font-size: 12px; letter-spacing: 0.35em; color: var(--text-light); font-weight: 600; }
+
 </style>
 </head>
 <body>
 
-<div class="petals-layer" id="petalsLayer" aria-hidden="true"></div>
+<!-- Nubes de fondo estilo la imagen de referencia -->
+<div class="bg-clouds" aria-hidden="true">
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+</div>
 
 <div class="wrap">
 
   <!-- ================= HERO ================= -->
   <section id="hero" class="scroll-anim">
     <img class="flor-deco f-hero-1 fade-up" src="flores.png" alt="">
-    <img class="flor-deco f-hero-2 fade-up" src="flores2.png" alt="">
-    <div class="bg-glow"></div>
+    <img class="flor-deco f-hero-2 fade-up d-1" src="flores2.png" alt="">
     
-    <span class="eyebrow fade-up">Mis XV Años</span>
-    <h1 class="script fade-up">
+    <span class="eyebrow fade-up d-2">Mis XV Años</span>
+    <h1 class="script title-wrap fade-up d-3">
       <span class="script-line">Fernanda</span>
-      <span class="script-line" style="margin-top: -10px;">Polette</span>
+      <span class="script-line">Polette</span>
     </h1>
-    <div class="apellidos fade-up">Rojas Franco</div>
-    <div class="fecha fade-up">8 de Agosto, 2026 · Tijuana, B.C.</div>
-    <p class="welcome fade-up">Con la bendición de Dios y el amor de mi familia, quiero compartir contigo uno de los días más especiales de mi vida.</p>
+    <div class="apellidos fade-up d-4">Rojas Franco</div>
+    <div class="fecha fade-up d-4">8 de Agosto, 2026 · Tijuana, B.C.</div>
+    <p class="welcome fade-up d-4">Con la bendición de Dios y el amor de mi familia, quiero compartir contigo uno de los días más especiales de mi vida.</p>
     
-    <div class="scroll-cue fade-up" style="transition-delay: 0.6s;">
+    <div class="scroll-cue fade-up d-4" style="transition-delay: 0.8s;">
       <span>Desliza</span>
       <div class="line"></div>
     </div>
   </section>
 
   <!-- ================= FAMILIA ================= -->
-  <section id="familia" class="bg-gradient-1 scroll-anim">
+  <section id="familia" class="scroll-anim">
     <img class="flor-deco f-sec-1 fade-up" src="flores.png" alt="">
     
     <span class="eyebrow fade-up">Con la bendición de</span>
-    <h2 class="serif fade-up" style="font-size: 30px; margin:0; color:var(--text-mid);">Mi Familia</h2>
+    <h2 class="serif fade-up d-1" style="font-size: 36px; margin:0; color:var(--text-main);">Mi Familia</h2>
     
     <div class="familia-grid">
-      <div class="familia-block fade-up">
+      <div class="familia-block fade-up d-2">
         <h3>Mis Padres</h3>
         <p>Alfredo Rojas Florez<br>&amp;<br>Carla Cristina Franco Ceseña</p>
       </div>
-      <div class="divider fade-up"></div>
-      <div class="familia-block fade-up">
+      <div class="divider fade-up d-3"></div>
+      <div class="familia-block fade-up d-4">
         <h3>Mis Padrinos</h3>
         <p>Jesús Abel Orrantia López<br>&amp;<br>Claudia Viviana Franco Ceseña</p>
       </div>
@@ -250,20 +266,19 @@
   </section>
 
   <!-- ================= MENSAJE ================= -->
-  <section id="mensaje" class="bg-gradient-2 scroll-anim">
-    <img class="flor-deco f-center" src="flores2.png" alt="">
-    <div class="bg-glow"></div>
+  <section id="mensaje" class="scroll-anim">
+    <img class="flor-deco f-center fade-up" src="flores2.png" alt="">
     <blockquote class="fade-up">
-      <span class="split-words">"Su presencia hará inolvidables mis 15"</span>
+      "Su presencia hará inolvidables mis 15"
     </blockquote>
   </section>
 
   <!-- ================= COUNTDOWN ================= -->
-  <section id="countdown" class="bg-gradient-1 scroll-anim">
+  <section id="countdown" class="scroll-anim">
     <span class="eyebrow fade-up">Faltan</span>
-    <h2 class="serif fade-up" style="font-size: 30px; margin:0; color:var(--text-mid);">Para celebrar juntos</h2>
+    <h2 class="serif fade-up d-1" style="font-size: 36px; margin:0; color:var(--text-main);">Para celebrar juntos</h2>
     
-    <div class="cd-row fade-up">
+    <div class="cd-row fade-up d-2">
       <div class="cd-cell"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Días</span></div>
       <span class="cd-sep">:</span>
       <div class="cd-cell"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Horas</span></div>
@@ -275,24 +290,22 @@
   </section>
 
   <!-- ================= UBICACIONES ================= -->
-  <section id="ubicaciones" class="bg-gradient-2 scroll-anim">
+  <section id="ubicaciones" class="scroll-anim">
     <img class="flor-deco f-sec-2 fade-up" src="flores2.png" alt="">
     
     <span class="eyebrow fade-up">Lugares en su honor</span>
-    <h2 class="serif fade-up" style="font-size: 30px; margin:0; color:var(--text-mid);">Nos vemos ahí</h2>
+    <h2 class="serif fade-up d-1" style="font-size: 36px; margin:0; color:var(--text-main);">Nos vemos ahí</h2>
 
-    <div class="loc-item fade-up">
-      <span class="eyebrow" style="color:var(--text-mid); letter-spacing:0.2em;">Ceremonia Religiosa</span>
+    <div class="loc-item fade-up d-2">
+      <span class="eyebrow" style="color:var(--text-main); margin-bottom:8px;">Ceremonia Religiosa</span>
       <h3>Parroquia Santa Teresa de Ávila</h3>
       <p>Av. Santa María 3120, Gabilondo<br>22040 Tijuana, B.C.</p>
       <div class="hora">1:00 pm</div>
       <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Parroquia+Santa+Teresa+de+Avila+Av+Santa+Maria+3120+Gabilondo+Tijuana+BC">Cómo llegar</a>
     </div>
 
-    <div class="divider fade-up" style="margin: 50px auto;"></div>
-
-    <div class="loc-item fade-up">
-      <span class="eyebrow" style="color:var(--text-mid); letter-spacing:0.2em;">Recepción</span>
+    <div class="loc-item fade-up d-3">
+      <span class="eyebrow" style="color:var(--text-main); margin-bottom:8px;">Recepción</span>
       <h3>Jardín Coral</h3>
       <p>Priv. 1, Río Tijuana 3ra Etapa, Erapa<br>Río Tijuana Gran Etapa, 22123 Tijuana, B.C.</p>
       <div class="hora">5:00 pm — 12:00 am</div>
@@ -301,39 +314,38 @@
   </section>
 
   <!-- ================= VESTIMENTA ================= -->
-  <section id="vestimenta" class="bg-gradient-1 scroll-anim">
-    <div class="bg-glow"></div>
+  <section id="vestimenta" class="scroll-anim">
     <span class="eyebrow fade-up">Código de vestimenta</span>
-    <div class="gala-word fade-up">Gala</div>
-    <p class="fade-up">Vestimos con elegancia total: los caballeros de traje, las damas con vestido largo o de cocktail.</p>
+    <div class="gala-word fade-up d-1">Gala</div>
+    <p class="fade-up d-2">Vestimos con elegancia total: los caballeros de traje, las damas con vestido largo o de cocktail.</p>
   </section>
 
   <!-- ================= REGALOS ================= -->
-  <section id="regalos" class="bg-gradient-2 scroll-anim">
-    <img class="flor-deco f-sec-1 fade-up" src="flores.png" alt="" style="top:-60px;">
+  <section id="regalos" class="scroll-anim">
+    <img class="flor-deco f-sec-1 fade-up" src="flores.png" alt="" style="top:-40px;">
     
     <span class="eyebrow fade-up">Mesa de regalos</span>
-    <h2 class="serif fade-up" style="font-size: 30px; margin:0; color:var(--text-mid);">Tu cariño es el mejor regalo</h2>
+    <h2 class="serif fade-up d-1" style="font-size: 36px; margin:0; color:var(--text-main);">Tu cariño es el mejor regalo</h2>
     
     <div class="bau-grid">
-      <div class="bau-item fade-up">
+      <div class="bau-item fade-up d-2">
         <h4>Baúl de regalos</h4>
         <p>Si deseas obsequiarme algo especial, contaremos con un baúl designado en la recepción.</p>
       </div>
-      <div class="bau-item fade-up" style="transition-delay: 0.1s;">
+      <div class="bau-item fade-up d-3">
         <h4>Baúl de sobres</h4>
         <p>También contaremos con un baúl para quienes prefieran dejar su regalo en sobre.</p>
       </div>
     </div>
-    <div class="nota fade-up">Lo más importante es tu presencia.</div>
+    <div class="nota fade-up d-4">Lo más importante es tu presencia.</div>
   </section>
 
   <!-- ================= RSVP ================= -->
-  <section id="confirmacion" class="bg-gradient-1 scroll-anim">
+  <section id="confirmacion" class="scroll-anim">
     <span class="eyebrow fade-up">Confirma tu asistencia</span>
-    <h2 class="serif fade-up" style="font-size: 30px; margin:0; color:var(--text-mid);">¿Nos acompañas?</h2>
+    <h2 class="serif fade-up d-1" style="font-size: 36px; margin:0; color:var(--text-main);">¿Nos acompañas?</h2>
     
-    <form id="rsvpForm" class="fade-up" onsubmit="return enviarRSVP(event)">
+    <form id="rsvpForm" class="fade-up d-2" onsubmit="return enviarRSVP(event)">
       <div class="input-group">
         <label for="rsvpNombre">Tu nombre completo</label>
         <input id="rsvpNombre" type="text" placeholder="Ej. Familia Rodríguez" required>
@@ -344,20 +356,20 @@
   </section>
 
   <!-- ================= MURO DE DESEOS ================= -->
-  <section id="muro" class="bg-gradient-2 scroll-anim">
+  <section id="muro" class="scroll-anim">
     <img class="flor-deco f-sec-2 fade-up" src="flores2.png" alt="">
     
     <span class="eyebrow fade-up">Muro de deseos</span>
-    <h2 class="serif fade-up" style="font-size: 30px; margin:0; color:var(--text-mid);">Déjame un mensaje</h2>
+    <h2 class="serif fade-up d-1" style="font-size: 36px; margin:0; color:var(--text-main);">Déjame un mensaje</h2>
     
-    <form id="muroForm" class="fade-up" onsubmit="return enviarMuro(event)">
+    <form id="muroForm" class="fade-up d-2" onsubmit="return enviarMuro(event)">
       <div class="input-group">
         <label for="muroNombre">Tu nombre</label>
         <input id="muroNombre" type="text" placeholder="¿De parte de quién?" required>
       </div>
       <div class="input-group">
         <label for="muroMensaje">Tu mensaje para Fernanda</label>
-        <textarea id="muroMensaje" placeholder="Escribe tus buenos deseos..." rows="3" required></textarea>
+        <textarea id="muroMensaje" placeholder="Escribe tus buenos deseos..." rows="4" required></textarea>
       </div>
       <button type="submit" class="submit-btn">Enviar mensaje</button>
       <p class="form-hint">Tu mensaje se enviará por WhatsApp para su muro.</p>
@@ -366,48 +378,12 @@
 
   <footer class="scroll-anim">
     <div class="script fade-up">Fernanda</div>
-    <div class="sub fade-up" style="transition-delay: 0.1s;">8 · 08 · 2026</div>
+    <div class="sub fade-up d-1">8 · 08 · 2026</div>
   </footer>
 
 </div>
 
 <script>
-  // ---------- Generador de Pétalos ----------
-  (function(){
-    const layer = document.getElementById('petalsLayer');
-    const colors = ['#F1E1E1', '#EBC2C7', '#C69A9E'];
-    const count = window.innerWidth < 600 ? 10 : 18;
-    for(let i=0; i<count; i++){
-      const p = document.createElement('div');
-      p.className = 'petal';
-      const size = 10 + Math.random()*6;
-      p.style.left = (Math.random()*100) + 'vw';
-      p.style.width = size + 'px';
-      p.style.height = (size*1.4) + 'px';
-      p.style.background = colors[i % colors.length];
-      p.style.animationDuration = (12 + Math.random()*15) + 's';
-      p.style.animationDelay = (Math.random()*-20) + 's';
-      layer.appendChild(p);
-    }
-  })();
-
-  // ---------- Animador de palabras (Para no cortar descensos de letras) ----------
-  document.querySelectorAll('.split-words').forEach(el => {
-    const words = el.innerText.split(' ');
-    el.innerHTML = '';
-    words.forEach((word, i) => {
-      const wrap = document.createElement('span');
-      wrap.className = 'anim-wrap';
-      wrap.style.marginRight = '6px';
-      const inner = document.createElement('span');
-      inner.className = 'anim-text';
-      inner.innerText = word;
-      inner.style.transitionDelay = `${i * 0.06}s`;
-      wrap.appendChild(inner);
-      el.appendChild(wrap);
-    });
-  });
-
   // ---------- Intersection Observer (Aparición al hacer scroll) ----------
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -415,7 +391,7 @@
         entry.target.classList.add('in');
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.12 });
 
   document.querySelectorAll('.scroll-anim').forEach(section => {
     observer.observe(section);
