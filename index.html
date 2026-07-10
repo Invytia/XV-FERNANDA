@@ -61,19 +61,31 @@
   .wrap { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 2; overflow: hidden; }
 
   /* ---------- Flores Decorativas ---------- */
+  /* AJUSTE: tamaños fluidos con clamp(), mayor separación del texto y opacidad
+     reducida para que las flores nunca compitan visualmente con la lectura. */
   .flor-deco {
     position: absolute;
     pointer-events: none;
     z-index: 1;
+    opacity: 0.5;
     animation: float 6s ease-in-out infinite alternate;
   }
-  .flor-deco.f-hero-1 { top: -20px; left: -40px; width: 280px; transform: rotate(15deg); }
-  .flor-deco.f-hero-2 { bottom: 5%; right: -50px; width: 260px; animation-delay: -3s; }
+  .flor-deco.f-hero-1 { top: -40px; left: -70px; width: clamp(120px, 30vw, 220px); transform: rotate(15deg); }
+  .flor-deco.f-hero-2 { bottom: 4%; right: -70px; width: clamp(110px, 28vw, 200px); animation-delay: -3s; }
   
-  .flor-deco.f-sec-1 { top: -30px; right: -30px; width: 220px; transform: rotate(45deg); }
-  .flor-deco.f-sec-2 { bottom: -20px; left: -40px; width: 250px; transform: rotate(-20deg); animation-delay: -2s; }
+  .flor-deco.f-sec-1 { top: -50px; right: -60px; width: clamp(90px, 24vw, 170px); transform: rotate(45deg); }
+  .flor-deco.f-sec-2 { bottom: -40px; left: -70px; width: clamp(100px, 26vw, 190px); transform: rotate(-20deg); animation-delay: -2s; }
   
-  .flor-deco.f-center { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; opacity: 0.15; z-index: 0; }
+  .flor-deco.f-center { top: 50%; left: 50%; transform: translate(-50%, -50%); width: clamp(200px, 55vw, 380px); opacity: 0.1; z-index: 0; }
+
+  /* En pantallas muy angostas, achica aún más y las empuja más hacia el borde */
+  @media (max-width: 420px) {
+    .flor-deco.f-hero-1 { top: -30px; left: -60px; width: 110px; }
+    .flor-deco.f-hero-2 { bottom: 2%; right: -55px; width: 100px; }
+    .flor-deco.f-sec-1 { top: -35px; right: -45px; width: 85px; }
+    .flor-deco.f-sec-2 { bottom: -30px; left: -55px; width: 95px; }
+    .flor-deco.f-center { width: 220px; }
+  }
 
   @keyframes float {
     0% { transform: translateY(0px) rotate(0deg); }
@@ -144,6 +156,7 @@
     font-family: 'Clicker Script', cursive; font-size: clamp(45px, 12vw, 65px);
     max-width: 480px; margin: 0 auto; line-height: 1.3; color: var(--text-main);
     padding: 30px 0; text-shadow: 0 0 20px rgba(255, 181, 208, 0.6);
+    position: relative; z-index: 2;
   }
 
   /* ---------- COUNTDOWN (Forzado a 1 sola línea) ---------- */
@@ -165,6 +178,7 @@
     padding: 40px 20px; border-radius: 30px; 
     box-shadow: 0 15px 35px rgba(216, 76, 119, 0.05);
     backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.8);
+    z-index: 2;
   }
   .loc-item h3 { font-family: 'Cormorant', serif; font-size: 28px; color: var(--text-main); margin: 15px 0 10px; font-weight: 600; font-style: normal; }
   .loc-item p { font-size: 15px; line-height: 1.7; margin: 0 0 15px; font-weight: 500; }
@@ -185,13 +199,13 @@
 
   /* ---------- REGALOS ---------- */
   .bau-grid { display: flex; flex-direction: column; gap: 30px; margin-top: 45px; text-align: center; }
-  .bau-item { background: var(--white-trans); padding: 35px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(10px); }
+  .bau-item { background: var(--white-trans); padding: 35px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(10px); position: relative; z-index: 2; }
   .bau-item h4 { font-family: 'Cormorant', serif; font-style: italic; font-size: 26px; color: var(--text-main); margin: 0 0 15px; font-weight: 600; }
   .bau-item p { font-size: 15px; line-height: 1.7; margin: 0 auto; max-width: 280px; font-weight: 500; }
-  #regalos .nota { margin-top: 50px; font-family: 'Clicker Script', cursive; font-size: 45px; color: var(--text-main); }
+  #regalos .nota { margin-top: 50px; font-family: 'Clicker Script', cursive; font-size: 45px; color: var(--text-main); position: relative; z-index: 2; }
 
   /* ---------- FORMS ---------- */
-  form { background: var(--white-trans); padding: 40px 25px; border-radius: 30px; max-width: 400px; margin: 35px auto 0; text-align: center; border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(216, 76, 119, 0.05); }
+  form { background: var(--white-trans); padding: 40px 25px; border-radius: 30px; max-width: 400px; margin: 35px auto 0; text-align: center; border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(10px); box-shadow: 0 15px 35px rgba(216, 76, 119, 0.05); position: relative; z-index: 2; }
   .input-group { position: relative; margin-bottom: 30px; text-align: left; }
   .input-group label { display: block; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-main); margin-bottom: 12px; font-weight: 600; }
   .input-group input, .input-group textarea {
@@ -322,7 +336,7 @@
 
   <!-- ================= REGALOS ================= -->
   <section id="regalos" class="scroll-anim">
-    <img class="flor-deco f-sec-1 fade-up" src="assets/flores.png" alt="" style="top:-40px;">
+    <img class="flor-deco f-sec-1 fade-up" src="assets/flores.png" alt="" style="top:-30px;">
     
     <span class="eyebrow fade-up">Mesa de regalos</span>
     <h2 class="serif fade-up d-1" style="font-size: 36px; margin:0; color:var(--text-main);">Tu cariño es el mejor regalo</h2>
