@@ -6,18 +6,21 @@
 <title>Mis XV Años · Fernanda Polette</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Tipografías Premium: Great Vibes (Script elegante), Cinzel (Serif clásico), Jost (Sans moderno y limpio) -->
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Tipografías Premium y Editoriales: 
+     Playfair Display (Elegancia clásica para títulos)
+     Pinyon Script (Caligrafía fina y muy femenina)
+     Montserrat (Limpieza y legibilidad moderna) -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Paleta de rosas femeninos y tiernos (Cero naranjas) */
-    --bg-light: #FFF0F3;
-    --bg-mid: #FFE4E8;
-    --bg-deep: #FFC2D1;
-    --text-dark: #800F2F; /* Rosa muy oscuro / Borgoña para legibilidad */
-    --text-mid: #A4133C;
-    --accent-glow: rgba(255, 143, 163, 0.6);
-    --gold-rose: #C97A8E;
+    /* Paleta de rosas tiernos, elegantes y polvosos (Cero naranjas, cero colores chillones) */
+    --bg-light: #FDF9F9;
+    --bg-mid: #F8EDED;
+    --bg-deep: #F1E1E1;
+    --text-dark: #5C3A41; /* Tono ciruela/marrón muy suave para legibilidad sin ser negro agresivo */
+    --text-mid: #9E6B73;  /* Rosa viejo elegante */
+    --gold-rose: #C69A9E; /* Acento rubor/dorado rosa */
+    --accent-glow: rgba(235, 186, 191, 0.5);
     
     --max-w: 640px;
     --ease-premium: cubic-bezier(0.25, 1, 0.2, 1);
@@ -29,7 +32,7 @@
     margin: 0;
     background: var(--bg-light);
     color: var(--text-dark);
-    font-family: 'Jost', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
@@ -38,78 +41,75 @@
 
   .wrap { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 2; overflow: hidden; }
 
-  /* ---------- Flores decorativas ---------- */
-  /* Nota: Al usar imágenes con fondo negro, el mix-blend-mode: screen ayuda a ocultar el negro, 
-     aunque para resultados perfectos se recomiendan PNGs transparentes. */
+  /* ---------- Flores decorativas en formato PNG ---------- */
   .flor-deco {
     position: absolute;
     pointer-events: none;
     z-index: 0;
-    mix-blend-mode: screen; 
-    opacity: 0.85;
+    opacity: 0.9;
     animation: floatFloat 6s ease-in-out infinite alternate;
   }
-  .flor-deco.f-hero-1 { top: -20px; left: -50px; width: 280px; }
-  .flor-deco.f-hero-2 { bottom: 10%; right: -60px; width: 220px; animation-delay: -3s; }
+  .flor-deco.f-hero-1 { top: -10px; left: -40px; width: 260px; }
+  .flor-deco.f-hero-2 { bottom: 5%; right: -50px; width: 240px; animation-delay: -3s; }
   
-  .flor-deco.f-sec-1 { top: -30px; right: -40px; width: 200px; transform: rotate(45deg); }
-  .flor-deco.f-sec-2 { bottom: -40px; left: -50px; width: 240px; transform: rotate(-30deg); animation-delay: -2s; }
+  .flor-deco.f-sec-1 { top: -20px; right: -30px; width: 220px; transform: rotate(45deg); }
+  .flor-deco.f-sec-2 { bottom: -30px; left: -40px; width: 250px; transform: rotate(-30deg); animation-delay: -2s; }
   
-  .flor-deco.f-center { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 350px; opacity: 0.15; z-index: 0; }
+  .flor-deco.f-center { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 380px; opacity: 0.2; z-index: 0; }
 
   @keyframes floatFloat {
     0% { transform: translateY(0) rotate(0deg) scale(1); }
-    100% { transform: translateY(-15px) rotate(3deg) scale(1.05); }
+    100% { transform: translateY(-12px) rotate(2deg) scale(1.03); }
   }
 
-  /* ---------- Pétalos ambientales ---------- */
+  /* ---------- Pétalos ambientales tiernos ---------- */
   .petals-layer { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
   .petal {
     position: absolute; top: -40px;
-    width: 12px; height: 16px;
+    width: 10px; height: 14px;
     border-radius: 50% 50% 50% 0;
-    opacity: 0.6;
+    opacity: 0.5;
     animation: fall linear infinite;
     will-change: transform;
   }
   @keyframes fall {
     0% { transform: translateY(0) translateX(0) rotate(45deg); opacity: 0; }
-    10% { opacity: 0.6; }
-    50% { transform: translateY(52vh) translateX(30px) rotate(220deg); }
-    90% { opacity: 0.6; }
-    100% { transform: translateY(108vh) translateX(-20px) rotate(400deg); opacity: 0; }
+    10% { opacity: 0.5; }
+    50% { transform: translateY(52vh) translateX(25px) rotate(220deg); }
+    90% { opacity: 0.5; }
+    100% { transform: translateY(108vh) translateX(-15px) rotate(400deg); opacity: 0; }
   }
 
   /* ---------- Tipografía y Utilerías ---------- */
-  .script { font-family: 'Great Vibes', cursive; color: var(--text-mid); line-height: 1.1; }
-  .serif { font-family: 'Cinzel', serif; }
+  .script { font-family: 'Pinyon Script', cursive; color: var(--text-mid); line-height: 1; font-weight: 400; }
+  .serif { font-family: 'Playfair Display', serif; font-style: italic; }
   
   .eyebrow {
-    font-family: 'Jost', sans-serif;
-    font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--gold-rose); font-weight: 500; display: block; margin-bottom: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold-rose); font-weight: 400; display: block; margin-bottom: 16px;
   }
 
-  section { padding: 90px 30px; position: relative; text-align: center; z-index: 2; }
+  section { padding: 90px 24px; position: relative; text-align: center; z-index: 2; }
   
-  /* Gradientes de fondo para separar secciones sin usar cajas */
   .bg-gradient-1 { background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg-mid) 100%); }
   .bg-gradient-2 { background: linear-gradient(180deg, var(--bg-mid) 0%, var(--bg-light) 100%); }
-  .bg-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); z-index: -1; filter: blur(40px); }
+  .bg-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 65%); z-index: -1; filter: blur(40px); }
 
-  /* ================= SISTEMA DE ANIMACIONES ================= */
-  .anim-wrap { overflow: hidden; display: inline-block; vertical-align: top; }
+  /* ================= SISTEMA DE ANIMACIONES (CORREGIDO PARA NO CORTAR LETRAS) ================= */
+  /* Se eliminó overflow:hidden del anim-wrap para que las letras cursivas puedan descender libremente */
+  .anim-wrap { display: inline-block; vertical-align: top; position: relative; }
   .anim-text {
     display: inline-block;
     opacity: 0;
-    transform: translateY(100%) rotate(3deg);
-    transition: transform 0.9s var(--ease-premium), opacity 0.9s var(--ease-premium);
+    transform: translateY(20px) scale(0.95);
+    transition: transform 1.2s var(--ease-premium), opacity 1.2s var(--ease-premium);
   }
-  .in .anim-text { opacity: 1; transform: translateY(0) rotate(0deg); }
+  .in .anim-text { opacity: 1; transform: translateY(0) scale(1); }
 
   .fade-up {
-    opacity: 0; transform: translateY(30px); filter: blur(5px);
-    transition: all 1s var(--ease-premium);
+    opacity: 0; transform: translateY(35px); filter: blur(3px);
+    transition: all 1.2s var(--ease-premium);
   }
   .in.fade-up, .in .fade-up { opacity: 1; transform: translateY(0); filter: blur(0); }
 
@@ -119,81 +119,87 @@
     padding: 60px 24px;
     background: radial-gradient(circle at 50% 30%, var(--bg-light) 0%, var(--bg-mid) 100%);
   }
-  #hero h1 { margin: 15px 0; font-size: clamp(65px, 16vw, 95px); font-weight: 400; text-shadow: 0 0 25px var(--accent-glow); }
-  #hero .apellidos { font-family: 'Cinzel', serif; font-size: 18px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-dark); margin-top: 10px; }
-  #hero .fecha { margin-top: 35px; font-family: 'Jost', sans-serif; font-size: 16px; letter-spacing: 0.15em; color: var(--text-mid); font-weight: 400; }
-  #hero .welcome { max-width: 420px; margin: 30px auto 0; font-size: 15px; line-height: 1.8; font-weight: 300; }
+  #hero h1 { margin: 10px 0; }
+  #hero .script-line { display: block; font-size: clamp(65px, 18vw, 110px); text-shadow: 0 0 20px var(--accent-glow); padding: 5px 0; }
   
-  .scroll-cue { margin-top: 60px; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-rose); display: flex; flex-direction: column; align-items: center; gap: 12px; }
-  .scroll-cue .line { width: 1px; height: 40px; background: linear-gradient(180deg, var(--gold-rose), transparent); animation: stretch 2s ease-in-out infinite; }
-  @keyframes stretch { 0%, 100% { transform: scaleY(1); transform-origin: top; } 50% { transform: scaleY(1.5); transform-origin: top; } }
+  #hero .apellidos { font-family: 'Playfair Display', serif; font-size: 14px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--text-dark); margin-top: 15px; }
+  #hero .fecha { margin-top: 40px; font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 0.2em; color: var(--text-mid); font-weight: 400; text-transform: uppercase; }
+  #hero .welcome { max-width: 420px; margin: 30px auto 0; font-size: 14px; line-height: 1.9; font-weight: 300; }
+  
+  .scroll-cue { margin-top: 60px; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-rose); display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .scroll-cue .line { width: 1px; height: 50px; background: linear-gradient(180deg, var(--gold-rose), transparent); animation: stretch 2s ease-in-out infinite; }
+  @keyframes stretch { 0%, 100% { transform: scaleY(1); transform-origin: top; } 50% { transform: scaleY(1.4); transform-origin: top; } }
 
   /* ---------- FAMILIA ---------- */
-  .familia-grid { display: flex; flex-direction: column; gap: 40px; margin-top: 40px; }
-  .familia-block h3 { font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-rose); margin: 0 0 15px; }
-  .familia-block p { font-family: 'Cinzel', serif; font-size: 22px; line-height: 1.6; margin: 0; color: var(--text-dark); text-shadow: 0 0 10px rgba(255,255,255,0.8); }
-  .divider { width: 1px; height: 60px; background: linear-gradient(180deg, transparent, var(--text-mid), transparent); margin: 20px auto; }
+  .familia-grid { display: flex; flex-direction: column; gap: 40px; margin-top: 45px; }
+  .familia-block h3 { font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-rose); margin: 0 0 15px; font-weight: 400; }
+  .familia-block p { font-family: 'Playfair Display', serif; font-size: 22px; line-height: 1.6; margin: 0; color: var(--text-dark); }
+  .divider { width: 1px; height: 50px; background: linear-gradient(180deg, transparent, var(--gold-rose), transparent); margin: 15px auto; }
 
   /* ---------- MENSAJE ---------- */
   #mensaje blockquote {
-    font-family: 'Great Vibes', cursive; font-size: clamp(34px, 8vw, 48px);
-    max-width: 480px; margin: 0 auto; line-height: 1.3; color: var(--text-mid);
-    text-shadow: 0 0 20px var(--accent-glow);
+    font-family: 'Pinyon Script', cursive; font-size: clamp(40px, 10vw, 56px);
+    max-width: 480px; margin: 0 auto; line-height: 1.2; color: var(--text-mid);
+    padding: 20px 0;
   }
 
-  /* ---------- COUNTDOWN ---------- */
-  .cd-row { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 40px; flex-wrap: wrap; }
-  .cd-cell { display: flex; flex-direction: column; align-items: center; min-width: 65px; }
-  .cd-num { font-family: 'Cinzel', serif; font-size: 50px; font-weight: 400; color: var(--text-dark); line-height: 1; text-shadow: 0 0 15px var(--accent-glow); }
-  .cd-label { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-rose); margin-top: 10px; }
-  .cd-sep { font-family: 'Cinzel', serif; font-size: 30px; color: var(--text-mid); margin-bottom: 20px; opacity: 0.5; }
+  /* ---------- COUNTDOWN (Forzado a 1 sola línea) ---------- */
+  .cd-row { 
+    display: flex; justify-content: center; align-items: center; 
+    gap: clamp(4px, 2vw, 18px); margin-top: 40px; 
+    flex-wrap: nowrap; /* Evita que se rompa en dos renglones */
+    width: 100%;
+  }
+  .cd-cell { display: flex; flex-direction: column; align-items: center; min-width: auto; }
+  .cd-num { font-family: 'Playfair Display', serif; font-size: clamp(28px, 8vw, 48px); font-weight: 400; color: var(--text-dark); line-height: 1; }
+  .cd-label { font-size: clamp(8px, 2.5vw, 11px); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-rose); margin-top: 10px; }
+  .cd-sep { font-family: 'Playfair Display', serif; font-size: clamp(20px, 5vw, 32px); color: var(--text-mid); opacity: 0.4; padding-bottom: 15px; }
 
-  /* ---------- UBICACIONES (Sin cajas) ---------- */
-  .loc-item { margin-top: 60px; position: relative; }
-  .loc-item h3 { font-family: 'Cinzel', serif; font-size: 28px; color: var(--text-dark); margin: 15px 0 10px; font-weight: 500; }
-  .loc-item p { font-size: 15px; line-height: 1.8; margin: 0 0 15px; color: var(--text-dark); }
-  .loc-item .hora { font-family: 'Cinzel', serif; font-size: 20px; color: var(--text-mid); margin-bottom: 20px; }
+  /* ---------- UBICACIONES ---------- */
+  .loc-item { margin-top: 50px; position: relative; }
+  .loc-item h3 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--text-dark); margin: 15px 0 10px; font-weight: 500; font-style: normal; }
+  .loc-item p { font-size: 14px; line-height: 1.8; margin: 0 0 15px; color: var(--text-dark); }
+  .loc-item .hora { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: var(--text-mid); margin-bottom: 22px; }
   
   .btn {
-    position: relative; overflow: hidden; display: inline-block; padding: 14px 32px;
-    background: linear-gradient(45deg, var(--text-mid), var(--text-dark));
-    color: #fff; text-decoration: none; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; border-radius: 40px;
+    position: relative; overflow: hidden; display: inline-block; padding: 14px 34px;
+    background: var(--text-mid); color: #fff; text-decoration: none; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; border-radius: 40px;
     box-shadow: 0 10px 25px -10px var(--text-mid);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
   }
-  .btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 30px -10px var(--text-dark); }
+  .btn:hover { transform: translateY(-3px) scale(1.02); background: var(--text-dark); box-shadow: 0 15px 30px -10px var(--text-dark); }
 
   /* ---------- VESTIMENTA ---------- */
-  .gala-word { font-family: 'Cinzel', serif; font-size: clamp(50px, 12vw, 80px); letter-spacing: 0.1em; color: var(--text-mid); font-weight: 400; margin: 20px 0; text-shadow: 0 0 20px var(--accent-glow); }
-  #vestimenta p { font-size: 15px; max-width: 380px; margin: 0 auto; line-height: 1.8; }
+  .gala-word { font-family: 'Pinyon Script', cursive; font-size: clamp(65px, 15vw, 90px); color: var(--text-mid); margin: 10px 0; }
+  #vestimenta p { font-size: 14px; max-width: 380px; margin: 0 auto; line-height: 1.9; }
 
   /* ---------- REGALOS ---------- */
-  .bau-grid { display: flex; flex-direction: column; gap: 40px; margin-top: 50px; text-align: center; }
-  .bau-item h4 { font-family: 'Cinzel', serif; font-size: 22px; color: var(--text-dark); margin: 0 0 10px; font-weight: 500; }
-  .bau-item p { font-size: 15px; line-height: 1.7; margin: 0; max-width: 300px; margin: 0 auto; }
-  #regalos .nota { margin-top: 50px; font-family: 'Great Vibes', cursive; font-size: 32px; color: var(--text-mid); }
+  .bau-grid { display: flex; flex-direction: column; gap: 45px; margin-top: 50px; text-align: center; }
+  .bau-item h4 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; color: var(--text-dark); margin: 0 0 12px; font-weight: 400; }
+  .bau-item p { font-size: 14px; line-height: 1.8; margin: 0 auto; max-width: 300px; }
+  #regalos .nota { margin-top: 60px; font-family: 'Pinyon Script', cursive; font-size: 40px; color: var(--text-mid); }
 
-  /* ---------- FORMS (Estilo limpio editorial) ---------- */
-  form { max-width: 400px; margin: 40px auto 0; text-align: center; }
+  /* ---------- FORMS ---------- */
+  form { max-width: 380px; margin: 40px auto 0; text-align: center; }
   .input-group { position: relative; margin-bottom: 35px; text-align: left; }
-  .input-group label { display: block; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-rose); margin-bottom: 10px; font-weight: 500; }
+  .input-group label { display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-rose); margin-bottom: 12px; font-weight: 400; }
   .input-group input, .input-group textarea {
-    width: 100%; padding: 12px 0; border: none; border-bottom: 1.5px solid var(--gold-rose);
-    background: transparent; color: var(--text-dark); font-family: 'Jost', sans-serif; font-size: 16px;
+    width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid var(--gold-rose);
+    background: transparent; color: var(--text-dark); font-family: 'Montserrat', sans-serif; font-size: 14px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease; resize: none;
   }
-  .input-group input:focus, .input-group textarea:focus { outline: none; border-color: var(--text-mid); box-shadow: 0 10px 10px -10px var(--accent-glow); }
+  .input-group input:focus, .input-group textarea:focus { outline: none; border-color: var(--text-mid); }
   .submit-btn {
-    width: 100%; padding: 16px; background: linear-gradient(45deg, var(--text-mid), var(--text-dark));
-    color: #fff; border: none; border-radius: 40px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-    cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease; box-shadow: 0 10px 25px -10px var(--text-mid); font-family: 'Jost', sans-serif;
+    width: 100%; padding: 16px; background: var(--text-mid);
+    color: #fff; border: none; border-radius: 40px; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    cursor: pointer; transition: transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease; font-family: 'Montserrat', sans-serif;
   }
-  .submit-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 30px -10px var(--text-dark); }
-  .form-hint { font-size: 12px; color: var(--gold-rose); margin-top: 20px; text-align: center; font-style: italic; }
+  .submit-btn:hover { background: var(--text-dark); transform: translateY(-2px); box-shadow: 0 15px 25px -10px var(--text-dark); }
+  .form-hint { font-size: 11px; color: var(--gold-rose); margin-top: 20px; text-align: center; font-style: italic; }
 
-  footer { padding: 80px 24px; text-align: center; background: var(--bg-deep); border-top: 1px solid var(--text-mid); }
-  footer .script { font-size: 45px; margin-bottom: 10px; }
-  footer .sub { font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 0.3em; color: var(--text-dark); }
+  footer { padding: 90px 24px 60px; text-align: center; background: var(--bg-deep); }
+  footer .script { font-family: 'Pinyon Script', cursive; font-size: 50px; color: var(--text-mid); margin-bottom: 15px; }
+  footer .sub { font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--text-dark); }
 </style>
 </head>
 <body>
@@ -204,17 +210,20 @@
 
   <!-- ================= HERO ================= -->
   <section id="hero" class="scroll-anim">
-    <img class="flor-deco f-hero-1 fade-up" src="flores.jpg" alt="">
-    <img class="flor-deco f-hero-2 fade-up" src="flores2.jpg" alt="">
+    <img class="flor-deco f-hero-1 fade-up" src="flores.png" alt="">
+    <img class="flor-deco f-hero-2 fade-up" src="flores2.png" alt="">
     <div class="bg-glow"></div>
     
-    <span class="eyebrow split-text">Mis XV Años</span>
-    <h1 class="script split-text">Fernanda Polette</h1>
-    <div class="apellidos split-text">Rojas Franco</div>
-    <div class="fecha split-text">8 de Agosto, 2026 · Tijuana, B.C.</div>
-    <p class="welcome split-words">Con la bendición de Dios y el amor de mi familia, quiero compartir contigo uno de los días más especiales de mi vida.</p>
+    <span class="eyebrow fade-up">Mis XV Años</span>
+    <h1 class="script fade-up">
+      <span class="script-line">Fernanda</span>
+      <span class="script-line" style="margin-top: -10px;">Polette</span>
+    </h1>
+    <div class="apellidos fade-up">Rojas Franco</div>
+    <div class="fecha fade-up">8 de Agosto, 2026 · Tijuana, B.C.</div>
+    <p class="welcome fade-up">Con la bendición de Dios y el amor de mi familia, quiero compartir contigo uno de los días más especiales de mi vida.</p>
     
-    <div class="scroll-cue fade-up" style="transition-delay: 1.5s;">
+    <div class="scroll-cue fade-up" style="transition-delay: 0.6s;">
       <span>Desliza</span>
       <div class="line"></div>
     </div>
@@ -222,10 +231,10 @@
 
   <!-- ================= FAMILIA ================= -->
   <section id="familia" class="bg-gradient-1 scroll-anim">
-    <img class="flor-deco f-sec-1 fade-up" src="flores.jpg" alt="">
+    <img class="flor-deco f-sec-1 fade-up" src="flores.png" alt="">
     
-    <span class="eyebrow split-text">Con la bendición de</span>
-    <h2 class="serif split-text" style="font-size: 32px; margin:0; color:var(--text-mid);">Mi Familia</h2>
+    <span class="eyebrow fade-up">Con la bendición de</span>
+    <h2 class="serif fade-up" style="font-size: 30px; margin:0; color:var(--text-mid);">Mi Familia</h2>
     
     <div class="familia-grid">
       <div class="familia-block fade-up">
@@ -242,7 +251,7 @@
 
   <!-- ================= MENSAJE ================= -->
   <section id="mensaje" class="bg-gradient-2 scroll-anim">
-    <img class="flor-deco f-center" src="flores2.jpg" alt="">
+    <img class="flor-deco f-center" src="flores2.png" alt="">
     <div class="bg-glow"></div>
     <blockquote class="fade-up">
       <span class="split-words">"Su presencia hará inolvidables mis 15"</span>
@@ -251,8 +260,8 @@
 
   <!-- ================= COUNTDOWN ================= -->
   <section id="countdown" class="bg-gradient-1 scroll-anim">
-    <span class="eyebrow split-text">Faltan</span>
-    <h2 class="serif split-text" style="font-size: 32px; margin:0; color:var(--text-mid);">Para celebrar juntos</h2>
+    <span class="eyebrow fade-up">Faltan</span>
+    <h2 class="serif fade-up" style="font-size: 30px; margin:0; color:var(--text-mid);">Para celebrar juntos</h2>
     
     <div class="cd-row fade-up">
       <div class="cd-cell"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Días</span></div>
@@ -267,13 +276,13 @@
 
   <!-- ================= UBICACIONES ================= -->
   <section id="ubicaciones" class="bg-gradient-2 scroll-anim">
-    <img class="flor-deco f-sec-2 fade-up" src="flores2.jpg" alt="">
+    <img class="flor-deco f-sec-2 fade-up" src="flores2.png" alt="">
     
-    <span class="eyebrow split-text">Lugares en su honor</span>
-    <h2 class="serif split-text" style="font-size: 32px; margin:0; color:var(--text-mid);">Nos vemos ahí</h2>
+    <span class="eyebrow fade-up">Lugares en su honor</span>
+    <h2 class="serif fade-up" style="font-size: 30px; margin:0; color:var(--text-mid);">Nos vemos ahí</h2>
 
     <div class="loc-item fade-up">
-      <span class="eyebrow" style="color:var(--text-mid);">Ceremonia Religiosa</span>
+      <span class="eyebrow" style="color:var(--text-mid); letter-spacing:0.2em;">Ceremonia Religiosa</span>
       <h3>Parroquia Santa Teresa de Ávila</h3>
       <p>Av. Santa María 3120, Gabilondo<br>22040 Tijuana, B.C.</p>
       <div class="hora">1:00 pm</div>
@@ -283,7 +292,7 @@
     <div class="divider fade-up" style="margin: 50px auto;"></div>
 
     <div class="loc-item fade-up">
-      <span class="eyebrow" style="color:var(--text-mid);">Recepción</span>
+      <span class="eyebrow" style="color:var(--text-mid); letter-spacing:0.2em;">Recepción</span>
       <h3>Jardín Coral</h3>
       <p>Priv. 1, Río Tijuana 3ra Etapa, Erapa<br>Río Tijuana Gran Etapa, 22123 Tijuana, B.C.</p>
       <div class="hora">5:00 pm — 12:00 am</div>
@@ -294,35 +303,35 @@
   <!-- ================= VESTIMENTA ================= -->
   <section id="vestimenta" class="bg-gradient-1 scroll-anim">
     <div class="bg-glow"></div>
-    <span class="eyebrow split-text">Código de vestimenta</span>
+    <span class="eyebrow fade-up">Código de vestimenta</span>
     <div class="gala-word fade-up">Gala</div>
-    <p class="split-words">Vestimos con elegancia total: los caballeros de traje, las damas con vestido largo o de cocktail.</p>
+    <p class="fade-up">Vestimos con elegancia total: los caballeros de traje, las damas con vestido largo o de cocktail.</p>
   </section>
 
   <!-- ================= REGALOS ================= -->
   <section id="regalos" class="bg-gradient-2 scroll-anim">
-    <img class="flor-deco f-sec-1 fade-up" src="flores.jpg" alt="" style="top:-80px;">
+    <img class="flor-deco f-sec-1 fade-up" src="flores.png" alt="" style="top:-60px;">
     
-    <span class="eyebrow split-text">Mesa de regalos</span>
-    <h2 class="serif split-text" style="font-size: 32px; margin:0; color:var(--text-mid);">Tu cariño es el mejor regalo</h2>
+    <span class="eyebrow fade-up">Mesa de regalos</span>
+    <h2 class="serif fade-up" style="font-size: 30px; margin:0; color:var(--text-mid);">Tu cariño es el mejor regalo</h2>
     
     <div class="bau-grid">
       <div class="bau-item fade-up">
         <h4>Baúl de regalos</h4>
         <p>Si deseas obsequiarme algo especial, contaremos con un baúl designado en la recepción.</p>
       </div>
-      <div class="bau-item fade-up" style="transition-delay: 0.2s;">
+      <div class="bau-item fade-up" style="transition-delay: 0.1s;">
         <h4>Baúl de sobres</h4>
         <p>También contaremos con un baúl para quienes prefieran dejar su regalo en sobre.</p>
       </div>
     </div>
-    <div class="nota split-words">Lo más importante es tu presencia.</div>
+    <div class="nota fade-up">Lo más importante es tu presencia.</div>
   </section>
 
   <!-- ================= RSVP ================= -->
   <section id="confirmacion" class="bg-gradient-1 scroll-anim">
-    <span class="eyebrow split-text">Confirma tu asistencia</span>
-    <h2 class="serif split-text" style="font-size: 32px; margin:0; color:var(--text-mid);">¿Nos acompañas?</h2>
+    <span class="eyebrow fade-up">Confirma tu asistencia</span>
+    <h2 class="serif fade-up" style="font-size: 30px; margin:0; color:var(--text-mid);">¿Nos acompañas?</h2>
     
     <form id="rsvpForm" class="fade-up" onsubmit="return enviarRSVP(event)">
       <div class="input-group">
@@ -336,10 +345,10 @@
 
   <!-- ================= MURO DE DESEOS ================= -->
   <section id="muro" class="bg-gradient-2 scroll-anim">
-    <img class="flor-deco f-sec-2 fade-up" src="flores2.jpg" alt="">
+    <img class="flor-deco f-sec-2 fade-up" src="flores2.png" alt="">
     
-    <span class="eyebrow split-text">Muro de deseos</span>
-    <h2 class="serif split-text" style="font-size: 32px; margin:0; color:var(--text-mid);">Déjame un mensaje</h2>
+    <span class="eyebrow fade-up">Muro de deseos</span>
+    <h2 class="serif fade-up" style="font-size: 30px; margin:0; color:var(--text-mid);">Déjame un mensaje</h2>
     
     <form id="muroForm" class="fade-up" onsubmit="return enviarMuro(event)">
       <div class="input-group">
@@ -357,7 +366,7 @@
 
   <footer class="scroll-anim">
     <div class="script fade-up">Fernanda</div>
-    <div class="sub fade-up" style="transition-delay: 0.2s;">8 · 08 · 2026</div>
+    <div class="sub fade-up" style="transition-delay: 0.1s;">8 · 08 · 2026</div>
   </footer>
 
 </div>
@@ -366,12 +375,12 @@
   // ---------- Generador de Pétalos ----------
   (function(){
     const layer = document.getElementById('petalsLayer');
-    const colors = ['#FFC2D1', '#FF8FA3', '#FFB3C6'];
-    const count = window.innerWidth < 600 ? 12 : 20;
+    const colors = ['#F1E1E1', '#EBC2C7', '#C69A9E'];
+    const count = window.innerWidth < 600 ? 10 : 18;
     for(let i=0; i<count; i++){
       const p = document.createElement('div');
       p.className = 'petal';
-      const size = 10 + Math.random()*8;
+      const size = 10 + Math.random()*6;
       p.style.left = (Math.random()*100) + 'vw';
       p.style.width = size + 'px';
       p.style.height = (size*1.4) + 'px';
@@ -382,44 +391,28 @@
     }
   })();
 
-  // ---------- Preparar textos para animación fluida ----------
-  document.querySelectorAll('.split-text').forEach(el => {
-    const text = el.innerText;
-    el.innerHTML = '';
-    text.split('').forEach((char, i) => {
-      const wrap = document.createElement('span');
-      wrap.className = 'anim-wrap';
-      const inner = document.createElement('span');
-      inner.className = 'anim-text';
-      inner.innerHTML = char === ' ' ? '&nbsp;' : char;
-      inner.style.transitionDelay = `${i * 0.03}s`;
-      wrap.appendChild(inner);
-      el.appendChild(wrap);
-    });
-  });
-
+  // ---------- Animador de palabras (Para no cortar descensos de letras) ----------
   document.querySelectorAll('.split-words').forEach(el => {
     const words = el.innerText.split(' ');
     el.innerHTML = '';
     words.forEach((word, i) => {
       const wrap = document.createElement('span');
       wrap.className = 'anim-wrap';
-      wrap.style.marginRight = '5px';
+      wrap.style.marginRight = '6px';
       const inner = document.createElement('span');
       inner.className = 'anim-text';
       inner.innerText = word;
-      inner.style.transitionDelay = `${i * 0.08}s`;
+      inner.style.transitionDelay = `${i * 0.06}s`;
       wrap.appendChild(inner);
       el.appendChild(wrap);
     });
   });
 
-  // ---------- Intersection Observer para animar al hacer scroll ----------
+  // ---------- Intersection Observer (Aparición al hacer scroll) ----------
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
         entry.target.classList.add('in');
-        // Opcional: observer.unobserve(entry.target) si solo quieres que se anime una vez.
       }
     });
   }, { threshold: 0.15 });
@@ -428,7 +421,7 @@
     observer.observe(section);
   });
   
-  // Activar Hero inmediatamente
+  // Activar Hero inmediatamente al cargar
   setTimeout(() => {
     document.getElementById('hero').classList.add('in');
   }, 100);
